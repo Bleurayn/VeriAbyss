@@ -42,6 +42,15 @@ record = {
         }
     ]
 }
+## Core Components & Citations
+
+VeriAbyss integrates AntiSIM v4.0 "ABYSS" for entropy-based hallucination detection.
+
+Cite AntiSIM v4.0 ABYSS:  
+![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17889466.svg)  
+[https://doi.org/10.5281/zenodo.17889466](https://doi.org/10.5281/zenodo.17889466)
+
+BibTeX example:
 
 sealed = veri_abyss_engine(record)
 print(json.dumps(sealed, indent=2))
