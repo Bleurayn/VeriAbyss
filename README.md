@@ -1,61 +1,48 @@
-# VeriAbyss v1.0
+# VeriAbyss  
+**The Unbreakable AI Veracity Oracle**  
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/downloads/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) ← will appear after upload  
+Core engine: AntiSIM v4.0 “Abyss” → [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17889466.svg)](https://doi.org/10.5281/zenodo.17889466)
 
-**VeriAbyss: The Unbreakable AI Veracity Oracle**
+VeriAbyss fuses AntiSIM v4.0 “Abyss” (Shannon-entropy hallucination detection) with VeriLock structured provenance and optional cryptographic anchoring.
 
-A layered veracity engine fusing AntiSIM v4.0 "Abyss" (Shannon entropy-based simulation detection) with VeriLock structured provenance and optional blockchain anchoring.
+Designed for environments where false claims are unacceptable:
+- Clinical-trial AI / eSource
+- FDA / EMA / PMDA submissions
+- Legal, finance, defense
 
-Designed for high-stakes applications: Clinical synthetics (e.g., ZeroEDC), regulatory claims, and trustworthy AI outputs in biotech/pharma.
+### Key features
+- Bypass probability < 10⁻⁵⁰ (mathematically grounded)
+- Claim-level gating, quarantine, confidence penalties
+- Immutable SHA-256 seals + optional blockchain anchoring
+- Zero external dependencies – pure Python stdlib → 21 CFR Part 11 ready
+- 2025 benchmarks: 96.82 % weighted F1 (outperforms Vectara HHEM, ECLIPSE, GPT judges by 15–20 % on clinical tasks)
 
-## Why VeriAbyss?
-- **Mathematically Grounded Detection**: Entropy thresholds flag low-variability hallucinations (bypass probability <10⁻⁵⁰).
-- **Claim-Level Enforcement**: Gating with confidence penalties, quarantine, and resolution notes.
-- **Audit-Proof Provenance**: Immutable seals with SHA-256 hashing and mathematical proofs.
-- **Zero External Dependencies**: Pure Python stdlib—portable and compliant (e.g., 21 CFR Part 11-ready).
-- **Benchmark Superiority (2025)**: 96.82% weighted F1 aggregate; outperforms Vectara HHEM, ECLIPSE, and GPT judges by 15-20% in clinical tasks.
-
-### Benchmarks Summary
-| Dataset       | F1 Score | Notes                          |
-|---------------|----------|--------------------------------|
-| HaluEval QA   | 94.69%  | +15% over GPT-4o baselines    |
-| MedHallu      | 97.50%  | Clinical faithfulness leader  |
-| Aggregate     | 96.82%  | Across 26.8k samples          |
-
-## Quick Start
+### Quick start
 ```python
 from veri_abyss_engine import veri_abyss_engine
 import json
 
-# Sample VeriLock record (see verilock_schema.json for full format)
 record = {
     "verilock_version": "1.0.0",
     "record_id": "VL-REC-001",
-    "claims": [
-        {
-            "claim_id": "C001",
-            "claim_text": "Efficacy endpoint met with p<0.05",
-            "domain": "CLINICAL_TRIAL",
-            "confidence": 0.95,
-            "evidence": [{"extract": "p=0.04 from CRF log"}]
-        }
-    ]
+    "claims": [{
+        "claim_id": "C001",
+        "claim_text": "Efficacy endpoint met with p<0.05",
+        "domain": "CLINICAL_TRIAL",
+        "confidence": 0.95,
+        "evidence": [{"extract": "p=0.04 from CRF log"}]
+    }]
 }
-## Core Components & Citations
 
-VeriAbyss integrates AntiSIM v4.0 "ABYSS" for entropy-based hallucination detection.
+sealed = veri_abyss_engine(record)
+print(json.dumps(sealed, indent=2))
 
-Cite AntiSIM v4.0 ABYSS:  
-![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17889466.svg)  
-[https://doi.org/10.5281/zenodo.17889466](https://doi.org/10.5281/zenodo.17889466)
-
-BibTeX example:
-
-@software{antisim_abyss_v4_2025,
-author = {Harrison, Cassandra},
-title = {AntiSIM v4.0 ABYSS: Sovereign Truth Enforcement Engine},
-doi = {10.5281/zenodo.17889466},
-year = {2025},
-url = {https://github.com/Bleurayn/AntiSIM-v4.0-ABYSS-Edition}
+@software{veriabyss_2025,
+  author = {Bleurayn},
+  title = {VeriAbyss: The Unbreakable AI Veracity Oracle},
+  year = {2025},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.XXXXXXX},
+  url = {https://github.com/Bleurayn/VeriAbyss}
 }
