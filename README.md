@@ -1,6 +1,6 @@
 # VeriAbyss v1.0
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/downloads/)
 
 **VeriAbyss: The Unbreakable AI Veracity Oracle**
@@ -10,7 +10,7 @@ A layered veracity engine fusing AntiSIM v4.0 "Abyss" (Shannon entropy-based sim
 Designed for high-stakes applications: Clinical synthetics (e.g., ZeroEDC), regulatory claims, and trustworthy AI outputs in biotech/pharma.
 
 ## Why VeriAbyss?
-- **Mathematically Grounded Detection**: Entropy thresholds flag low-variability hallucinations (bypass probability <10^{-50}).
+- **Mathematically Grounded Detection**: Entropy thresholds flag low-variability hallucinations (bypass probability <10⁻⁵⁰).
 - **Claim-Level Enforcement**: Gating with confidence penalties, quarantine, and resolution notes.
 - **Audit-Proof Provenance**: Immutable seals with SHA-256 hashing and mathematical proofs.
 - **Zero External Dependencies**: Pure Python stdlib—portable and compliant (e.g., 21 CFR Part 11-ready).
