@@ -38,6 +38,7 @@ record = {
 sealed = veri_abyss_engine(record)
 print(json.dumps(sealed, indent=2))
 
+### BibTex
 @software{veriabyss_2025,
   author = {Bleurayn},
   title = {VeriAbyss: The Unbreakable AI Veracity Oracle},
