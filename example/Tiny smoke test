@@ -1,0 +1,12 @@
+mkdir -p tests
+cat > tests/test_basic.py << 'EOF'
+import unittest
+from veri_abyss_engine import veri_abyss_engine
+class TestVeriAbyss(unittest.TestCase):
+def test_seal(self):
+record = {"verilock_version": "1.0.0", "record_id": "TEST", "claims": []}
+result = veri_abyss_engine(record)
+self.assertIn("seal", result)
+if name == "main":
+unittest.main()
+EOF
