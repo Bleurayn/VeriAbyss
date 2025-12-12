@@ -1,1 +1,115 @@
-# Full VeriLock/TruthGate schema with antisim_seal extensions
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Bleurayn/VeriAbyss/verilock_schema.json",
+  "$defs": {
+    "actor": {
+      "type": "object",
+      "required": ["actor_id", "actor_role"],
+      "properties": {
+        "actor_id": { "type": "string" },
+        "actor_role": { "type": "string" },
+        "display_name": { "type": "string" }
+      }
+    },
+    "evidenceItem": {
+      "type": "object",
+      "required": ["evidence_id", "evidence_type", "source", "relevance"],
+      "properties": {
+        "evidence_id": { "type": "string" },
+        "evidence_type": {
+          "type": "string",
+          "enum": ["DOCUMENT", "DATASET", "EMAIL", "MEETING_NOTE", "SCREENSHOT", "URL", "TEST_RESULT", "ATTESTATION", "CLINICAL_TRIAL_LOG", "GENOMIC_VCF"]
+        },
+        "source": {
+          "type": "object",
+          "required": ["location"],
+          "properties": {
+            "location": { "type": "string" },
+            "hash_sha256": { "type": "string" },
+            "retrieved_at": { "type": "string", "format": "date-time" },
+            "blockchain_anchor": { "type": "string", "description": "e.g., Ethereum tx hash or Fabric proposal ID" }
+          }
+        },
+        "relevance": { "type": "string" },
+        "extract": { "type": "string" }
+      }
+    }
+  },
+  "title": "VeriLock Record Schema",
+  "description": "Structured format for verifiable claims with AntiSIM v4.0 integration and provenance seals",
+  "type": "object",
+  "required": ["verilock_version", "record_id", "status", "created_at", "created_by", "division_scope", "classification", "claims", "audit_trail", "seals"],
+  "properties": {
+    "verilock_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "record_id": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["DRAFT", "IN_REVIEW", "APPROVED", "REJECTED", "QUARANTINED", "SUPERSEDED"]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time", "default": null },
+    "created_by": { "$ref": "#/$defs/actor" },
+    "division_scope": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "classification": {
+      "type": "object",
+      "required": ["data_sensitivity", "ip_tier", "distribution"],
+      "properties": {
+        "data_sensitivity": { "type": "string", "enum": ["PUBLIC", "INTERNAL", "CONFIDENTIAL", "VANTACORE_LOCKED"] },
+        "ip_tier": { "type": "string", "enum": ["TIER_0", "TIER_1", "TIER_2", "TIER_3"] },
+        "distribution": { "type": "string", "enum": ["NEED_TO_KNOW", "INTRA_DIVISION", "CROSS_DIVISION"] }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "claim_text", "claim_type", "domain", "risk_level", "truth_state", "confidence", "evidence"],
+        "properties": {
+          "claim_id": { "type": "string" },
+          "claim_text": { "type": "string" },
+          "claim_type": { "type": "string", "enum": ["FACT", "INTERPRETATION", "ASSUMPTION", "REQUIREMENT", "DECISION", "QUOTE"] },
+          "domain": { "type": "string", "enum": ["LEGAL", "REGULATORY", "SCIENTIFIC", "FINANCIAL", "OPERATIONAL", "BRAND", "SECURITY", "HISTORICAL", "CLINICAL_TRIAL", "GENOMICS"] },
+          "risk_level": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"] },
+          "truth_state": { "type": "string", "enum": ["UNVERIFIED", "PARTIALLY_VERIFIED", "VERIFIED", "DISPROVEN", "INCONCLUSIVE"] },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceItem" } },
+          "counterevidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceItem" } },
+          "resolution_notes": { "type": "string" }
+        }
+      }
+    },
+    "audit_trail": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["event_id", "timestamp", "actor", "action"],
+        "properties": {
+          "event_id": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "actor": { "$ref": "#/$defs/actor" },
+          "action": { "type": "string", "enum": ["CREATE", "UPDATE", "SUBMIT_FOR_REVIEW", "ADD_EVIDENCE", "FLAG_RISK", "APPROVE", "REJECT", "QUARANTINE", "SEAL"] },
+          "details": { "type": "object" }
+        }
+      }
+    },
+    "seals": {
+      "type": "object",
+      "properties": {
+        "veriabyss_seal": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "product_version": { "type": "string" },
+            "antisim_version": { "type": "string" },
+            "score_avg": { "type": "number" },
+            "sealed_at": { "type": "string", "format": "date-time" },
+            "math_proof": { "type": "string" }
+          }
+        }
+        // Add Vantacore/Phoenix/Sovereign as needed
+      }
+    }
+  }
+}
