@@ -52,5 +52,10 @@ Cite AntiSIM v4.0 ABYSS:
 
 BibTeX example:
 
-sealed = veri_abyss_engine(record)
-print(json.dumps(sealed, indent=2))
+@software{antisim_abyss_v4_2025,
+author = {Harrison, Cassandra},
+title = {AntiSIM v4.0 ABYSS: Sovereign Truth Enforcement Engine},
+doi = {10.5281/zenodo.17889466},
+year = {2025},
+url = {https://github.com/Bleurayn/AntiSIM-v4.0-ABYSS-Edition}
+}
