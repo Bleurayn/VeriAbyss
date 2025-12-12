@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Bleurayn"
+    given-names: ""  # Add first name if desired
+    orcid: "https://orcid.org/0000-0000-0000-0000"  # Optional
+title: "VeriAbyss: The Unbreakable AI Veracity Oracle"
+version: 1.0.0
+doi: 10.5281/zenodo.XXXXXXX  # Zenodo auto-fills
+date-released: 2025-12-12
+repository-code: "https://github.com/Bleurayn/VeriAbyss"
+license: Apache-2.0
+keywords:
+  - ai safety
+  - hallucination detection
+  - provenance
+  - regulatory compliance
+  - clinical trials
+
+references:
+  - title: "AntiSIM v4.0 ABYSS: Sovereign Truth Enforcement Engine"
+    doi: 10.5281/zenodo.17889466
+    type: software
