@@ -35,3 +35,5 @@ Fuses AntiSIM v4.0 entropy detection with structured provenance and anchoring.
 Benchmarks: 96.82% F1 aggregate; 97.50% on MedHallu clinical.
 
 Usage: Load record JSON > veri_abyss_engine(record) > Sealed output.
+## VeriLock Record Schema
+See [verilock_schema.json](verilock_schema.json) for the full JSON Schema defining input/output records.
