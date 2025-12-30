@@ -1,12 +1,15 @@
 [project]
 name = "veriabyss"
 version = "1.0.0"
-description = "Unbreakable AI veracity oracle with AntiSIM v4.0 Abyss + VeriLock provenance"
+description = "Unbreakable AI Veracity Oracle with AntiSIM v4.0 Abyss + VeriLock Provenance"
 authors = [{name = "Bleurayn"}]
 license = {text = "Apache-2.0"}
 requires-python = ">=3.9"
 dependencies = []
+keywords = ["ai-safety", "hallucination-detection", "provenance", "clinical-trials", "regulatory"]
 
-[build-system]
-requires = ["setuptools>=45", "wheel"]
-build-backend = "setuptools.build_meta"
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+veriabyss-seal = "veriabyss.cli:main"
