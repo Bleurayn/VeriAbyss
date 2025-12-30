@@ -36,8 +36,8 @@ pip install veriabyss
 veriabyss-seal record.json sealed.json
 ### Quick start
 ```python
-from veri_abyss_engine import veri_abyss_engine
-import json
+pip install pytest
+pytest tests/test_veriabyss.py -v
 
 record = {
     "verilock_version": "1.0.0",
