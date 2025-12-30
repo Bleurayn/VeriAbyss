@@ -68,6 +68,6 @@ print(json.dumps(sealed, indent=2))
   title = {VeriAbyss: The Unbreakable AI Veracity Oracle},
   year = {2025},
   publisher = {Zenodo},
-  doi = {10.5281/zenodo.XXXXXXX},
+  doi = [{10.5281/zenodo.XXXXXXX}](https://doi.org/10.5281/zenodo.17889466),
   url = {https://github.com/Bleurayn/VeriAbyss}
 }
