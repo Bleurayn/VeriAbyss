@@ -29,6 +29,19 @@ Zero external dependencies → fully auditable → suitable for 21 CFR Part 11, 
 
 ### Benchmarks
 Internal simulation on HaluEval/RAGTruth-style cases: 98%+ detection of hallucinations while passing grounded claims.
+VeriAbyss™ / AntiSIM v4.0 ABYSS
+Copyright 2025 Cassandra D. Harrison / Bleurayn
+
+Created by Cassandra D. Harrison / Bleurayn.
+
+VeriAbyss™ is an AI veracity, evidence provenance, claim-gating, and cryptographic sealing system. Core components include AntiSIM v4.0 ABYSS, VeriLock structured provenance, claim-level evidence gating, hallucination/fabrication risk scoring, SHA-256 sealing, and optional cryptographic anchoring.
+
+Required attribution:
+“Powered by VeriAbyss™ / AntiSIM v4.0 ABYSS — created by Cassandra D. Harrison / Bleurayn.”
+
+Source repositories:
+- Bleurayn/VeriAbyss
+- Bleurayn/AntiSIM-v4.0-ABYSS-Edition
 
 ### CLI Usage
 ```bash
